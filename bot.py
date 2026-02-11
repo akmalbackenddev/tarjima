@@ -614,12 +614,11 @@ async def start_handler(message: Message):
             kb = build_subscribe_keyboard(not_subscribed, instagram_links)
             await message.answer(
                 "📺 Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling.\n"
-                "Agar kanal private bo'lsa, link orqali request yuborasiz:",
                 reply_markup=kb
             )
             return
 
-    await message.answer("🎬 Xush kelibsiz!\nKino yoki serialni ko'rish uchun kodini yuboring.")
+    await message.answer("🎬 Xush kelibsiz!\nKinoni ko'rish uchun kodini yuboring.")
 
 
 @router.callback_query(F.data == "check_subscription")
@@ -637,8 +636,6 @@ async def check_subscription_callback(callback: CallbackQuery):
     stats = await db.get_statistics()
     text = (
         "✅ Tabriklaymiz! Barcha kanallarga obuna bo'ldingiz.\n\n"
-        f"📁 Jami kinolar: {stats['movies_count']} ta\n"
-        f"📺 Jami seriallar: {stats['serials_count']} ta\n\n"
         "Endi kod yuboring."
     )
     if await db.is_admin(user.id):
@@ -1311,3 +1308,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
