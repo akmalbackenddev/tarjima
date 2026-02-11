@@ -613,7 +613,7 @@ async def start_handler(message: Message):
         if not_subscribed:
             kb = build_subscribe_keyboard(not_subscribed, instagram_links)
             await message.answer(
-                "📺 Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling.\n"
+                "📺 Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling.\n",
                 reply_markup=kb
             )
             return
@@ -1308,4 +1308,5 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
